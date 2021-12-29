@@ -35,7 +35,7 @@ class Events(models.Model):
     def get_correct_contract_name(self):
         if self.event_type == 2:
             return f'Hero: {self.hero_id}'
-        return CONTRACTS_JSON.get(self.contract_hash)
+        return CONTRACTS_JSON.get(self.contract_hash.lower())
 
     def dict_record(self):
         return {

@@ -5,7 +5,7 @@ EVENT_TYPES = {
 }
 
 CONTRACTS_JSON = {
-    '0x24eA0D436d3c2602fbfEfBe6a16bBc304C963D04': 'GaiaTears',
+    '0x24ea0d436d3c2602fbfefbe6a16bbc304c963d04': 'GaiaTears',
     '0x6e1bc01cc52d165b357c42042cf608159a2b81c1': 'Ambertaffy',
     '0x68ea4640c5ce6cc0c9a1f17b7b882cb1cbeaccd7': 'Darkweed',
     '0x600541ad6ce0a8b5dae68f086d46361534d20e80': 'Goldvein',
