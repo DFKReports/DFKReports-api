@@ -1,10 +1,15 @@
 from django.http import JsonResponse
-
+import logging
+from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from events.constants import EVENT_TYPES
-from events.models import Events
+from events.models import Events, ApiKey
+
 
 def IncomeExpensesView(request, wallet_hash):
+    valid_key = ApiKey.objects.filter(key=request.headers['x-api-key']).first()
+    if not valid_key:
+        raise PermissionDenied()
     event_filter = Q(Q(to_wallet=wallet_hash) | Q(from_wallet=wallet_hash))
     if date_lte := request.GET.get('date_lte'):
         event_filter &= Q(epoch_timestamp__lte=date_lte)

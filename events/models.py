@@ -33,10 +33,9 @@ class Events(models.Model):
         return round(unit_price * quantity, 4)
 
     def get_correct_contract_name(self):
-        if self.event_type == 1:
-            return CONTRACTS_JSON.get(self.contract_hash)
-        elif self.event_type == 2:
+        if self.event_type == 2:
             return f'Hero: {self.hero_id}'
+        return CONTRACTS_JSON.get(self.contract_hash)
 
     def dict_record(self):
         return {
@@ -47,6 +46,15 @@ class Events(models.Model):
             "transaction_gasfee": f'{self.transaction_gasfee} ONE',
             "transaction_hash": self.transaction_hash
         }
+
+
+class ApiKey(models.Model):
+    key = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = 'apikeys'
 
 
 
