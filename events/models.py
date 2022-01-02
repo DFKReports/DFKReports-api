@@ -57,7 +57,6 @@ class ApiKey(models.Model):
         db_table = 'apikeys'
 
 
-
 # Following models are only used for dev purposes and not relevant for this api
 
 class QuestsTest(models.Model):

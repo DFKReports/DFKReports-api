@@ -1,5 +1,4 @@
 from django.http import JsonResponse
-import logging
 from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from events.constants import EVENT_TYPES
@@ -18,7 +17,7 @@ def IncomeExpensesView(request, wallet_hash):
 
     all_income_events, all_expenses_events = [], []
     total_income, total_expenses = 0.0, 0.0
-    all_events = Events.objects.filter(event_filter).exclude(event_type = 1, price_unit_dollar=0).order_by('-epoch_timestamp')
+    all_events = Events.objects.filter(event_filter).exclude(contract_hash__in="0x0000000000000000000000000000000000000000").order_by('-epoch_timestamp')  
     events_per_type = {v: [e for e in all_events if e.event_type == k] for k, v in EVENT_TYPES.items()}
 
     for event_type, relevant_events in events_per_type.items():

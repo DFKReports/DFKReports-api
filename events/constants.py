@@ -1,7 +1,7 @@
 EVENT_TYPES = {
     1: "Quest Reward",
     2: "Hero Sale",
-    3: "Dex Trade"
+    3: "Hero Summon"
 }
 
 CONTRACTS_JSON = {
@@ -28,6 +28,7 @@ CONTRACTS_JSON = {
     '0x6d605303e9ac53c59a3da1ece36c9660c7a71da5': 'Green Pet Egg',
     '0xac5c49ff7e813de1947dc74bbb1720c353079ac9': 'Blue Stem',
     '0xc0214b37fcd01511e6283af5423cf24c96bb9808': 'Milkweed',
-    '0x19b9f05cde7a61ab7aae5b0ed91aa62ff51cf881': 'Spiderfruit'
+    '0x19b9f05cde7a61ab7aae5b0ed91aa62ff51cf881': 'Spiderfruit',
+    '0x3a4edcf3312f44ef027acfd8c21382a5259936e7': 'Gold',
     }
     
