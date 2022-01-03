@@ -17,12 +17,12 @@ def IncomeExpensesView(request, wallet_hash):
 
     all_income_events, all_expenses_events = [], []
     total_income, total_expenses = 0.0, 0.0
-    all_events = Events.objects.filter(event_filter).exclude(contract_hash__in="0x0000000000000000000000000000000000000000").order_by('-epoch_timestamp')  
+    all_events = Events.objects.filter(event_filter).exclude(contract_hash="0x0000000000000000000000000000000000000000").order_by('-epoch_timestamp')  
     events_per_type = {v: [e for e in all_events if e.event_type == k] for k, v in EVENT_TYPES.items()}
 
     for event_type, relevant_events in events_per_type.items():
         if event_type == EVENT_TYPES.get(1):
-            income_events = [e for e in relevant_events if e.to_wallet == wallet_hash]
+            income_events = [e for e in relevant_events if (e.to_wallet == wallet_hash and e.contract_hash != "0x72cb10c6bfa5624dd07ef608027e366bd690048f")]
             expenses_events = []
         else:
             income_events = [e for e in relevant_events if e.from_wallet == wallet_hash]
